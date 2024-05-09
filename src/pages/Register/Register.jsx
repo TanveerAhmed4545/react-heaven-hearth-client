@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import signUpAnimation from '../../assets/signUpAnimation.json';
+import signUpAnimation from '../../assets/log.json';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
@@ -66,7 +66,7 @@ const Register = () => {
         <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left lg:ml-10">
-            <h1 className="text-5xl font-bold mb-6 lg:mb-8">Register Now</h1>
+            <h1 className="text-5xl font-bold ">Register Now</h1>
             <div className=" max-w-[600px] md:max-w-md lg:max-w-[600px]">
               <Lottie className="w-full" animationData={signUpAnimation} loop={true} />
             </div>
@@ -117,11 +117,11 @@ const Register = () => {
                 
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-[#59E5A8] text-white">Register</button>
+                <button className="btn bg-[#85A1FF] text-white">Register</button>
               </div>
             </form>
             <div className="text-center py-5">
-           <p>Already have an account ? <Link className="text-[#59E5A8] font-bold" to='/login'>Login</Link></p>
+           <p>Already have an account ? <Link className="text-[#85A1FF] font-bold" to='/login'>Login</Link></p>
            </div>
           </div>
         </div>

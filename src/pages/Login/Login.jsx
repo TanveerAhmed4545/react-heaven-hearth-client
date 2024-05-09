@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import signInAnimation from '../../assets/signInAnimation.json';
+import signInAnimation from '../../assets/reg.json';
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -71,6 +71,7 @@ const Login = () => {
       
           </div>
           <div className="card  shrink-0 w-full max-w-md shadow-2xl bg-base-100">
+          {/* <h1 className="text-4xl font-bold text-center mt-4">Login Now</h1> */}
             <form className="card-body pb-0" onSubmit={handleSubmit(onSubmit)}>
              
               
@@ -100,7 +101,7 @@ const Login = () => {
                 
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-[#59E5A8] text-white">Login</button>
+                <button className="btn bg-[#85A1FF] text-white">Login</button>
               </div>
             </form>
             <div className="px-8 pt-6">
@@ -110,7 +111,7 @@ const Login = () => {
               </button>
            </div>
             <div className="text-center py-5">
-           <p>Do not have an account ? <Link className="text-[#59E5A8] font-bold" to='/register'>Register</Link></p>
+           <p>Do not have an account ? <Link className="text-[#85A1FF] font-bold" to='/register'>Register</Link></p>
            </div>
           </div>
         </div>

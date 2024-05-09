@@ -6,7 +6,7 @@ const AutoPopUp = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 5000); // Show popup after 5 seconds
+    }, 2000); // Show popup after 5 seconds
 
     return () => clearTimeout(timer);
   }, []);

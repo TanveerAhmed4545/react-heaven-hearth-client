@@ -1,5 +1,6 @@
-// import AutoPopUp from "./AutoPopUp";
+import AutoPopUp from "./AutoPopUp";
 import Banner from "./Banner";
+import NewsLetter from "./NewsLetter";
 import OurMap from "./OurMap";
 
 
@@ -7,9 +8,10 @@ import OurMap from "./OurMap";
 const Home = () => {
     return (
         <div>
-            {/* <AutoPopUp></AutoPopUp> */}
+            <AutoPopUp></AutoPopUp>
             <Banner></Banner>
             <OurMap></OurMap>
+            <NewsLetter></NewsLetter>
         </div>
     );
 };
