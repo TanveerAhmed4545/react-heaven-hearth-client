@@ -3,6 +3,8 @@ import Root from "../layouts/Root";
 import Home from "../pages/Home/Home";
 import Rooms from "../pages/Rooms/Rooms";
 import MyBooking from "../pages/MyBooking/MyBooking";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 
 const router = createBrowserRouter([
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
         {
             path: '/my-booking',
             element: <MyBooking></MyBooking>
+        },
+        {
+            path: '/login',
+            element: <Login></Login>,
+        },
+        {
+            path: '/register',
+            element: <Register></Register>
         }
       ]
     },
