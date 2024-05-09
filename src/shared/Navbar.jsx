@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
 
     const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/rooms'>Rooms</NavLink></li>
-        <li><NavLink to='/my-booking'>My Booking</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+        <li className="mr-1"><NavLink to='/'>Home</NavLink></li>
+        <li className="mr-1"><NavLink to='/rooms'>Rooms</NavLink></li>
+        <li className="mr-1"><NavLink to='/my-booking'>My Booking</NavLink></li>
+        <li className="mr-1"><NavLink to='/login'>Login</NavLink></li>
+        <li className="mr-1"><NavLink to='/register'>Register</NavLink></li>
+        
     </>
 
     return (
@@ -27,7 +28,7 @@ const Navbar = () => {
     <a ><span className='font-semibold mr-1 text-xl lg:text-2xl '>Haven</span> <span className='font-semibold text-lg lg:text-xl  '>Hearth</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu  menu-horizontal px-1">
       {
         links
       }
