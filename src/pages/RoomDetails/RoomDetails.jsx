@@ -1,5 +1,5 @@
-import { useContext,  useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useContext,  useEffect,  useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsCurrencyDollar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
@@ -9,38 +9,39 @@ import axios from "axios";
 
 const RoomDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
-    // const [booking,setBooking] = useState([]);
+    const [booking,setBooking] = useState([]);
     const {user} = useContext(AuthContext);
     console.log(user);
-    const navigate = useNavigate();
-    // const {id} = useParams();
+    // const navigate = useNavigate();
+    const {id} = useParams();
     // console.log(id);
-    const details = useLoaderData();
+    // const details = useLoaderData();
+    // setBooking(details);
     // console.log(details);
-    const {_id,description,price,size,availability,images,special_offer} = details;
+    const {_id,description,price,size,availability,images,special_offer} = booking;
 
 
 
-//     useEffect(() => {
-//         getData()
-//       // eslint-disable-next-line react-hooks/exhaustive-deps
-//       }, [user])
+    useEffect(() => {
+        getData()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [user])
  
-//    const getData = async () => {
-//      const { data } = await axios(
-//        `http://localhost:5000/rooms/${id}`
-//      )
-//      setBooking(data);
-//    }
+   const getData = async () => {
+     const { data } = await axios(
+       `http://localhost:5000/rooms/${id}`
+     )
+     setBooking(data);
+   }
  
 
 
     const handleSubmit = async () =>{
         
         // const form = e.target;
-        if(!user){
-            navigate("/login");
-        }
+        // if(!user){
+        //     navigate("/login");
+        // }
 
         
         const date = startDate;
@@ -57,9 +58,21 @@ const RoomDetails = () => {
         console.table(bookData);
 
           try{
-            const {data} = await axios.patch(`http://localhost:5000/booking/${_id}`,bookData)
-            console.log(data);
-            navigate('/my-booking');
+               await axios.patch(`http://localhost:5000/booking/${_id}`,bookData)
+
+              // Fetch the updated room details
+              const { data } = await axios.get(`http://localhost:5000/rooms/${_id}`);
+        
+              // Update the details 
+              setBooking(data);
+
+
+            const modal = document.getElementById('my_modal_1');
+            if (modal) {
+            modal.close();
+            }
+
+            // navigate('/my-booking');
           }catch (err) {
                console.log(err)
           }
@@ -92,9 +105,11 @@ const RoomDetails = () => {
 
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
+<Link to={!user && '/login'}>
 <button 
 disabled = {availability === 'no'}
 className="btn w-full" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
+</Link>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Hello!</h3>
@@ -113,7 +128,6 @@ className="btn w-full" onClick={()=>document.getElementById('my_modal_1').showMo
     <div className="modal-action">
       <form method="dialog" >
         {/* if there is a button in form, it will close the modal */}
-        
         <button className="btn" >Close</button>
       </form>
     </div>
