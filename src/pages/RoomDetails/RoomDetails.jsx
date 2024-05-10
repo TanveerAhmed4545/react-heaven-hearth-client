@@ -83,15 +83,15 @@ const RoomDetails = () => {
     
 
     return (
-        <div className="card    hover:shadow-xl hover:shadow-[#E3F9ED]   my-5 lg:my-10 mx-5">
+        <div className="card rounded-none   hover:shadow-2xl hover:shadow-[#D9E1FF]   my-5 lg:my-10 mx-5">
           
             
   <div className="">
-  <figure><img className="rounded-2xl lg:h-screen lg:w-full" src={images}/></figure>
+  <figure><img className=" lg:h-screen lg:w-full" src={images}/></figure>
   </div>
   <div className="p-5 lg:p-10 space-y-5 ">
     
-    <p className="text-xl flex items-center"><span className="font-semibold ">Price :</span> <span className="text-blue-gray-600 flex items-center"> {price} <BsCurrencyDollar className=""/></span> </p>
+    <p className="text-xl flex items-center"><span className="font-semibold ">Price : </span> <span className="text-blue-gray-600 flex items-center"> {price} <BsCurrencyDollar className=""/></span> </p>
     <p className="text-xl"><span className="font-semibold ">Room Size :</span> <span className="text-blue-gray-600">{size}</span></p>
     
     <p className="text-xl"><span className="font-semibold ">Short Description : </span>  <span className="text-blue-gray-600">{description}</span></p>
@@ -108,14 +108,15 @@ const RoomDetails = () => {
 <Link to={!user && '/login'}>
 <button 
 disabled = {availability === 'no'}
-className="btn w-full" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
+className="btn w-full text-white bg-[#959cef]" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
 </Link>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
-    <h3 className="font-bold text-lg">Hello!</h3>
-    <p className="py-4">Press ESC key or click the button below to close</p>
-    <div className=''>
-              <label className='text-gray-700 mr-5'>Date pick :</label> 
+    <h3 className="font-bold text-lg">Price : {price} $</h3>
+    <p className="py-4 font-semibold">Special Offer : {special_offer}</p>
+    <p className="pb-2 font-semibold">Room Size : {size}</p>
+    <div className='pb-2'>
+              <label className='text-gray-700 mr-5 font-semibold'>Date pick :</label> 
 
               {/* Date Picker Input Field */}
               <DatePicker
@@ -124,11 +125,11 @@ className="btn w-full" onClick={()=>document.getElementById('my_modal_1').showMo
                 onChange={date => setStartDate(date)}
               />
             </div>
-            <button className="btn" onClick={handleSubmit}>Confirm</button>
+            <button className="btn w-full font-semibold text-white bg-[#959cef]" onClick={handleSubmit}>Confirm</button>
     <div className="modal-action">
       <form method="dialog" >
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn" >Close</button>
+        <button className="btn w-full text-white bg-[#EA1A66]" >Close</button>
       </form>
     </div>
   </div>
