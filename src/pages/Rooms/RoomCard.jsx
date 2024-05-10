@@ -1,13 +1,18 @@
+import { Link } from "react-router-dom";
+
 // eslint-disable-next-line react/prop-types
 const RoomCard = ({ room }) => {
+    // eslint-disable-next-line react/prop-types
+    const {_id,images} = room;
   return (
    
-      <div className="card rounded-xl rounded-br-none card-compact w-96 bg-base-100 shadow-xl">
+      <Link to={`/room-details/${_id}`}>
+      <div className="card rounded-xl rounded-br-none card-compact  bg-base-100 shadow-xl">
         <figure>
           <img
           className="h-auto md:h-44 lg:h-52 w-full rounded-tl-none rounded-br-none rounded-xl"
-            // eslint-disable-next-line react/prop-types
-            src={room.images}
+
+            src={images}
             alt="Shoes"
           />
         </figure>
@@ -19,6 +24,7 @@ const RoomCard = ({ room }) => {
           </div>
         </div> */}
       </div>
+      </Link>
     
   );
 };
