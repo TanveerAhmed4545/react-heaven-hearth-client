@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
+import MyReview from "../pages/MyBooking/MyReview";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
             element: <RoomDetails></RoomDetails>,
             loader: ({params})=> fetch(`http://localhost:5000/rooms/${params.id}`)
 
+        },
+        {
+            path: '/my-review/:id',
+            element: <MyReview></MyReview>,
+            loader: ({params})=> fetch(`http://localhost:5000/rooms/${params.id}`)
         }
       ]
     },

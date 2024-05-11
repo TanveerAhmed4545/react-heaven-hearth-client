@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+import TableMyRow from "./TableMyRow";
 
 
 const MyBooking = () => {
 
     const {user} = useContext(AuthContext)
     const [myBooking,setMyBooking] = useState([]);
+    // const [startDate, setStartDate] = useState(new Date());
 
     useEffect(() => {
         getData()
@@ -24,35 +28,81 @@ const MyBooking = () => {
 //    console.log(myBooking);
 
 
-   const handleCancel = async(id) =>{
-           console.log(id);
+//    const handleCancel = async(id) =>{
+//            console.log(id);
 
-           Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, cancel it!"
-          }).then(async (result) => {
-            if (result.isConfirmed) {
-                const {data} = await axios.patch(`http://localhost:5000/booking-cancel/${id}`)
-                console.log(data);
+//            Swal.fire({
+//             title: "Are you sure?",
+//             text: "You won't be able to revert this!",
+//             icon: "warning",
+//             showCancelButton: true,
+//             confirmButtonColor: "#3085d6",
+//             cancelButtonColor: "#d33",
+//             confirmButtonText: "Yes, cancel it!"
+//           }).then(async (result) => {
+//             if (result.isConfirmed) {
+//                 const {data} = await axios.patch(`http://localhost:5000/booking-cancel/${id}`)
+//                 console.log(data);
 
-                if(data.modifiedCount>0){
-                    Swal.fire({
-                        title: "Canceled!",
-                        text: "Your Booking has been Canceled.",
-                        icon: "success"
-                      });
-                      getData();
-                }
+//                 if(data.modifiedCount>0){
+//                     Swal.fire({
+//                         title: "Canceled!",
+//                         text: "Your Booking has been Canceled.",
+//                         icon: "success"
+//                       });
+//                       getData();
+//                 }
 
               
-            }
-          });     
-   }
+//             }
+//           });     
+//    }
+
+
+//    const handleSubmit = async (id) =>{
+//     console.log(id)
+//     const date = startDate;
+   
+
+//     const bookData ={
+//         date, 
+//     }
+//     console.table(bookData);
+
+//     try{
+//       await axios.put(`http://localhost:5000/booking-update/${id}`,bookData)
+//       .then(res =>{
+//         console.log(res.data);
+//         if(res.data.modifiedCount>0){
+//           Swal.fire({
+//               title: 'Success!',
+//               text: 'Date updated successfully',
+//               icon: 'success',
+//               confirmButtonText: 'Done'
+//             })
+//             getData();
+//       }else{
+//           Swal.fire({
+//               title: 'Error!',
+//               text: 'Do you want to continue',
+//               icon: 'error',
+//               confirmButtonText: 'Cool'
+//             })
+//       }
+        
+//       })
+
+
+//    const modal = document.getElementById('my_modal_1');
+//    if (modal) {
+//    modal.close();
+//    }
+//  }catch (err) {
+//       console.log(err)
+//  }
+//    }
+
+
 
     return (
         <div>
@@ -69,39 +119,13 @@ const MyBooking = () => {
         <th>Date</th>
         <th>Update Date</th>
         <th>Cancel Booking</th>
+        <th>Add Review</th>
       </tr>
     </thead>
     <tbody>
       {/* row 1 */}
       {
-        myBooking.map((book,idx) => <tr className="hover" key={book._id}>
-              <th>{idx+1}</th>
-            <td>
-              <div className="flex items-center gap-3">
-                <div className="avatar">
-                  <div className="mask rounded w-24 h-24">
-                    <img src={book.images} />
-                  </div>
-                </div>
-                
-              </div>
-            </td>
-            <td>
-             {book.email}
-              
-            </td>
-            <td>{book.price} $</td>
-            <td>{book.size}</td>
-            <td>{new Date(book.date).toLocaleDateString()}</td>
-            <th>
-              <button className="btn btn-ghost text-white bg-[#959cef] btn-sm">Update</button>
-            </th>
-            <th>
-              <button
-              onClick={()=>handleCancel(book._id)}
-              className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Cancel</button>
-            </th>
-          </tr>)
+        myBooking.map((book,idx) => <TableMyRow key={book._id} book={book} getData={getData} idx={idx}></TableMyRow>)
       }
       
     </tbody>
