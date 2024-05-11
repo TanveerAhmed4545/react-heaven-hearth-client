@@ -7,13 +7,13 @@ const RoomCard = ({ room }) => {
   return (
    
       <Link to={`/room-details/${_id}`}>
-      <div className="card rounded-xl rounded-br-none card-compact  bg-base-100 shadow-xl">
+      <div className="card rounded-none  card-compact  bg-base-100 shadow-xl">
         <figure>
           <img
-          className="h-auto md:h-44 lg:h-52 w-full rounded-tl-none rounded-br-none rounded-xl"
+          className="h-auto md:h-44 lg:h-52 w-full "
 
             src={images}
-            alt="Shoes"
+            
           />
         </figure>
         {/* <div className="card-body">

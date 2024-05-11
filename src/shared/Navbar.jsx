@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import demoUserPic from "../assets/demoUser.png";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from "react-tooltip";
-
+import logo from '../../public/hotel.svg'
 
 
 const Navbar = () => {
@@ -52,7 +52,11 @@ const handleSignOut = () =>{
         }
       </ul>
     </div>
-    <a ><span className='font-semibold mr-1 text-xl lg:text-2xl '>Haven</span> <span className='font-semibold text-lg lg:text-xl  '>Hearth</span></a>
+    {/* <a ><span className='font-semibold mr-1 text-xl lg:text-2xl '>Haven</span> <span className='font-semibold text-lg lg:text-xl  '>Hearth</span></a> */}
+    <Link to='/' className='flex gap-2 items-center'>
+            <img className='w-auto h-7' src={logo}  />
+            <span className='font-bold'>HavenHearth</span>
+          </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu  menu-horizontal px-1">

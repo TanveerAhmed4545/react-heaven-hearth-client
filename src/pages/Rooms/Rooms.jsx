@@ -54,9 +54,9 @@ const Rooms = () => {
              <h2 className=" text-2xl lg:text-4xl font-extrabold">
               Discover Latest Rooms
              </h2>
-              <p className=" pt-6 w-full mx-auto lg:w-9/12">
+              {/* <p className=" pt-6 w-full mx-auto lg:w-9/12">
               Explore the latest in rooms  on our platform.{" "}
-               </p>
+               </p> */}
       </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 mb-4">
@@ -82,7 +82,7 @@ const Rooms = () => {
     </button>
 </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 px-6">
                          {
                             rooms.map(room => <RoomCard key={room._id} room={room} ></RoomCard> )
                          }

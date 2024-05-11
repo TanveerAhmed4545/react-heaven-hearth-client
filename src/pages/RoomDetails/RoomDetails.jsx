@@ -142,7 +142,7 @@ const RoomDetails = () => {
 <Link to={!user && '/login'}>
 <button 
 disabled = {availability === 'no'}
-className="btn w-full text-white bg-[#959cef]" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
+className="btn w-full rounded-none text-white bg-[#959cef]" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
 </Link>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">

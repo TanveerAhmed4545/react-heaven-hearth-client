@@ -2,6 +2,7 @@
 // import { useEffect, useState } from "react";
 import AllReviews from "./AllReviews";
 import Banner from "./Banner";
+import HomeFeatured from "./HomeFeatured";
 import NewsLetter from "./NewsLetter";
 import OurMap from "./OurMap";
 // import AutoPopUp from "./AutoPopUp";
@@ -23,6 +24,7 @@ const Home = () => {
             {/* <AutoPopUp></AutoPopUp> */}
             {/* {showModal && <AutoPopUp onClose={handleCloseModal} />} */}
             <Banner></Banner>
+            <HomeFeatured></HomeFeatured>
             <OurMap></OurMap>
             <NewsLetter></NewsLetter>
             <AllReviews></AllReviews>
