@@ -1,5 +1,5 @@
 import { useContext,  useEffect,  useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsCurrencyDollar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
@@ -10,16 +10,31 @@ import axios from "axios";
 const RoomDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [booking,setBooking] = useState([]);
+    const [reviews, setReviews] = useState([]);
     const {user} = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     // const navigate = useNavigate();
     const {id} = useParams();
     // console.log(id);
-    // const details = useLoaderData();
-    // setBooking(details);
-    // console.log(details);
+    // const reviewsData = useLoaderData();
+    // setReviews(reviewsData);
+    // console.log(reviewsData);
     const {_id,description,price,size,availability,images,special_offer} = booking;
 
+
+    // const reviewRating = reviews.filter(item => item.roomId === _id);
+    // console.log(reviewRating);
+    
+
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/reviews`)
+        .then(res => {
+          // console.log(res.data);
+          setReviews(res.data)
+        })
+    },[])
+
+    
 
 
     useEffect(() => {
@@ -55,7 +70,7 @@ const RoomDetails = () => {
             date,
             email
         }
-        console.table(bookData);
+        // console.table(bookData);
 
           try{
                await axios.patch(`http://localhost:5000/booking/${_id}`,bookData)
@@ -80,6 +95,10 @@ const RoomDetails = () => {
 
     }
 
+    const reviewData = reviews.filter(item => item.roomId === _id);
+    console.log(reviewData);
+
+
     
 
     return (
@@ -98,6 +117,21 @@ const RoomDetails = () => {
     
     <p className="text-xl"><span className="font-semibold ">Availability : </span> <span className="text-blue-gray-600">{availability}</span> </p>
     <p className="text-xl"><span className="font-semibold ">Special Offer : </span> <span className="text-blue-gray-600">{special_offer}</span> </p>
+     
+
+     {
+       reviewData.length > 0 ? ( <p>Totals Review : {reviewData.length}</p>) :  (<p>Totals Review : {0}</p>)
+     }
+
+{
+    reviewData.length > 0 ? (
+        <div>
+            {reviewData.map(item => <p key={item._id}>{item.userName}</p>)}
+        </div>
+    ) : (
+        <p> Please Book First to add Some beautiful Reviews</p>
+    )
+}
     
     <div>
    
