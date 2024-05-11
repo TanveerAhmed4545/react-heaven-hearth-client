@@ -193,7 +193,7 @@ const handleOpenModal = () => {
               className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Cancel</button>
             </th>
             <th>
-             <Link to={`/my-review/${_id}`}> <button className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Add Review</button></Link>
+             <Link to={`/my-review/${_id}`}> <button className="btn btn-ghost text-white bg-[#9CABF6] btn-sm">Add Review</button></Link>
             </th>
           </tr>
     );
