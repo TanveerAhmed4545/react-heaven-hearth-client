@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RoomCard from "./RoomCard";
+import axios from "axios";
 
 
 const Rooms = () => {
@@ -24,17 +25,26 @@ const Rooms = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const fetchRooms = () => {
+    const fetchRooms = async () => {
         let url = "http://localhost:5000/rooms";
-        if (minPrice && maxPrice) {
-            url = `${url}?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        // if (minPrice && maxPrice) {
+        //     url = `${url}?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        // }
+        // fetch(url)
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setRooms(data);
+        //     })
+        //     .catch((error) => console.error("Error fetching rooms:", error));
+        try {
+            if (minPrice && maxPrice) {
+                url = `${url}?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+            }
+            const response = await axios.get(url);
+            setRooms(response.data);
+        } catch (error) {
+            console.error("Error fetching rooms:", error);
         }
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-                setRooms(data);
-            })
-            .catch((error) => console.error("Error fetching rooms:", error));
     };
 
     const handleFilter = () => {
@@ -65,18 +75,18 @@ const Rooms = () => {
         placeholder="Min Price"
         value={minPrice}
         onChange={(e) => setMinPrice(e.target.value)}
-        className="border border-gray-300 rounded-md px-3 py-2 mb-2 lg:mb-0"
+        className="border border-gray-300  px-3 py-2 mb-2 lg:mb-0"
     />
     <input
         type="number"
         placeholder="Max Price"
         value={maxPrice}
         onChange={(e) => setMaxPrice(e.target.value)}
-        className="border border-gray-300 rounded-md px-3 py-2 mb-2 lg:mb-0"
+        className="border border-gray-300  px-3 py-2 mb-2 lg:mb-0"
     />
     <button
         onClick={handleFilter}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className="bg-[#8C86E3] text-white px-4 py-2  hover:bg-[#8C86E3]"
     >
         Filter
     </button>

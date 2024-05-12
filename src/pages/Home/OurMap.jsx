@@ -19,7 +19,7 @@ const OurMap = () => {
       </div>
              <div className="p-5 relative z-0">
         <MapContainer
-        className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] rounded-2xl"
+        className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] "
           center={[23.8769, 90.3795]}
           zoom={13}
           scrollWheelZoom={false}

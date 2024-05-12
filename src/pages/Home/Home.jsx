@@ -1,5 +1,5 @@
-// import AutoPopUp from "./AutoPopUp";
-// import { useEffect, useState } from "react";
+import AutoPopUp from "./AutoPopUp";
+import { useEffect, useState } from "react";
 import AllReviews from "./AllReviews";
 import Banner from "./Banner";
 import HomeFeatured from "./HomeFeatured";
@@ -10,19 +10,19 @@ import OurMap from "./OurMap";
 
 
 const Home = () => {
-//     const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-//   useEffect(() => {
-//     setShowModal(true); // Trigger modal open on mount
-//   }, []);
+  useEffect(() => {
+    setShowModal(true); 
+  }, []);
 
-//   const handleCloseModal = () => {
-//     setShowModal(false);
-//   };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
     return (
         <div>
             {/* <AutoPopUp></AutoPopUp> */}
-            {/* {showModal && <AutoPopUp onClose={handleCloseModal} />} */}
+            {showModal && <AutoPopUp onClose={handleCloseModal} />}
             <Banner></Banner>
             <HomeFeatured></HomeFeatured>
             <OurMap></OurMap>

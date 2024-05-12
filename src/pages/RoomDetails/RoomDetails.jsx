@@ -5,6 +5,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import ReviewCard from "./ReviewCard";
 
 
 const RoomDetails = () => {
@@ -120,16 +121,16 @@ const RoomDetails = () => {
      
 
      {
-       reviewData.length > 0 ? ( <p>Totals Review : {reviewData.length}</p>) :  (<p>Totals Review : {0}</p>)
+       reviewData.length > 0 ? ( <p className="font-semibold text-lg">Totals Review : {reviewData.length}</p>) :  (<p className="font-semibold text-lg">Totals Review : {0}</p>)
      }
 
 {
     reviewData.length > 0 ? (
         <div>
-            {reviewData.map(item => <p key={item._id}>{item.userName}</p>)}
+            {reviewData.map(item => <ReviewCard key={item._id} item={item}></ReviewCard>)}
         </div>
     ) : (
-        <p> Please Book First to add Some beautiful Reviews</p>
+        <p className="font-semibold text-lg"> Please Book First to add Some beautiful Reviews</p>
     )
 }
     
