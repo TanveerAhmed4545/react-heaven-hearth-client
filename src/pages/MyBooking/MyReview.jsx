@@ -32,7 +32,7 @@ const MyReview = () => {
     console.log(reviewData);
 
     try {
-        const {data} =  await axios.post('http://localhost:5000/reviews', reviewData);
+        const {data} =  await axios.post('http://localhost:5000/reviews', reviewData,{withCredentials: true});
          if(data.insertedId){
             console.log(data);
             Swal.fire({
@@ -86,7 +86,7 @@ const MyReview = () => {
           className="border border-gray-300 rounded-md p-2 w-full"
         />
       </div>
-      <div className="text-center mt-10">
+      <div className="text-center my-10">
       <button
         // onClick={handleSubmit}
         type="submit"

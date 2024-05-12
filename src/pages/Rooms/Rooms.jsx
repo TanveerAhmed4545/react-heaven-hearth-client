@@ -69,7 +69,7 @@ const Rooms = () => {
                </p> */}
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 mb-4">
+      <div className="flex flex-col lg:flex-row lg:justify-center lg:space-x-4 px-6 md:px-20 mb-4">
     <input
         type="number"
         placeholder="Min Price"

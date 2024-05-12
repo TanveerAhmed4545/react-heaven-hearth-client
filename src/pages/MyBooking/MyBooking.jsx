@@ -20,7 +20,7 @@ const MyBooking = () => {
  
    const getData = async () => {
      const { data } = await axios(
-       `http://localhost:5000/my-books/${user?.email}`
+       `http://localhost:5000/my-books/${user?.email}` ,{withCredentials: true}
      )
      setMyBooking(data);
    }
@@ -105,7 +105,7 @@ const MyBooking = () => {
 
 
     return (
-        <div>
+        <div className=" min-h-[50vh] md:min-h-[80vh]">
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
