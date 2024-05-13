@@ -26,7 +26,7 @@ const RoomDetails = () => {
     
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/reviews`)
+        axios.get(`https://react-heaven-hearth-server.vercel.app/reviews`)
         .then(res => {
           
           setReviews(res.data)
@@ -43,7 +43,7 @@ const RoomDetails = () => {
  
    const getData = async () => {
      const { data } = await axios(
-       `http://localhost:5000/rooms/${id}`
+       `https://react-heaven-hearth-server.vercel.app/rooms/${id}`
      )
      setBooking(data);
    }
@@ -79,11 +79,11 @@ const RoomDetails = () => {
        
 
           try{
-               await axios.patch(`http://localhost:5000/booking/${_id}`,bookData)
-               await axios.post(`http://localhost:5000/booking-post`,bookingData)
+               await axios.patch(`https://react-heaven-hearth-server.vercel.app/booking/${_id}`,bookData)
+               await axios.post(`https://react-heaven-hearth-server.vercel.app/booking-post`,bookingData)
 
               // Fetch the updated room details
-              const { data } = await axios.get(`http://localhost:5000/rooms/${_id}`);
+              const { data } = await axios.get(`https://react-heaven-hearth-server.vercel.app/rooms/${_id}`);
         
               // Update the details 
               setBooking(data);

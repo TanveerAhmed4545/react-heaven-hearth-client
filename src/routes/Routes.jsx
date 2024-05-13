@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         {
             path: '/room-details/:id',
             element: <RoomDetails></RoomDetails>,
-            loader: ()=> fetch("http://localhost:5000/reviews")
+            loader: ()=> fetch("https://react-heaven-hearth-server.vercel.app/reviews")
 
         },
         {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             element: <PrivateRoute>
                 <MyReview></MyReview>
             </PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/booking-review/${params.id}`)
+            loader: ({params})=> fetch(`https://react-heaven-hearth-server.vercel.app/booking-review/${params.id}`)
         },
         {
             path: '/contact',

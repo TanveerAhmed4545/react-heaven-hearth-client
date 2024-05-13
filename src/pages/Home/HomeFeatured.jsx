@@ -8,7 +8,7 @@ const HomeFeatured = () => {
     const [featuredRoom,setFeaturedRoom] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/room')
+        axios.get('https://react-heaven-hearth-server.vercel.app/room')
         .then(res => {
         //   console.log(res.data);
           setFeaturedRoom(res.data);

@@ -12,7 +12,7 @@ const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/reviews')
+        axios.get('https://react-heaven-hearth-server.vercel.app/reviews')
             .then(response => {
                 setReviews(response.data);
             })

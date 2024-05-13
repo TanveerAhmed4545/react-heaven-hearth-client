@@ -27,7 +27,7 @@ const Rooms = () => {
     }, []);
 
     const fetchRooms = async () => {
-        let url = "http://localhost:5000/rooms";
+        let url = "https://react-heaven-hearth-server.vercel.app/rooms";
         // if (minPrice && maxPrice) {
         //     url = `${url}?minPrice=${minPrice}&maxPrice=${maxPrice}`;
         // }

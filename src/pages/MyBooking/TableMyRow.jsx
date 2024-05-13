@@ -40,10 +40,10 @@ const TableMyRow = ({book,getData,idx}) => {
           if (result.isConfirmed) {
               try {
                   // Make  cancel the booking
-                  await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`);
+                  await axios.patch(`https://react-heaven-hearth-server.vercel.app/booking-cancel/${roomId}`);
 
                   // Delete the booking 
-                  const { data } = await axios.delete(`http://localhost:5000/booking-delete/${id}`);
+                  const { data } = await axios.delete(`https://react-heaven-hearth-server.vercel.app/booking-delete/${id}`);
                  
 
                   //  booking  deleted
@@ -168,7 +168,7 @@ const handleOpenModal = () => {
     // console.table(bookData);
 
     try {
-      const response = await axios.patch(`http://localhost:5000/book-update/${_id}`, bookData);
+      const response = await axios.patch(`https://react-heaven-hearth-server.vercel.app/book-update/${_id}`, bookData);
       //  await axios.put(`http://localhost:5000/booking-update/${_id}`, bookData);
       console.log(response.data);
       if (response.data.modifiedCount > 0) {
