@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import HomeFeatured from "./HomeFeatured";
 import NewsLetter from "./NewsLetter";
 import OurMap from "./OurMap";
+import { Helmet } from "react-helmet-async";
 // import AutoPopUp from "./AutoPopUp";
 
 
@@ -21,6 +22,9 @@ const Home = () => {
   };
     return (
         <div>
+          <Helmet>
+                <title>Heaven Hearth || Home</title>
+            </Helmet>
             {/* <AutoPopUp></AutoPopUp> */}
             {showModal && <AutoPopUp onClose={handleCloseModal} />}
             <Banner></Banner>

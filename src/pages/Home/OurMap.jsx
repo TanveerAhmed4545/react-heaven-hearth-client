@@ -20,7 +20,7 @@ const OurMap = () => {
              <div className="p-5 relative z-0">
         <MapContainer
         className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] "
-          center={[23.8769, 90.3795]}
+          center={[21.422964, 91.978813]}
           zoom={13}
           scrollWheelZoom={false}
         >
@@ -28,7 +28,7 @@ const OurMap = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[23.8759, 90.3795]} icon={customIcon}>
+          <Marker position={[21.422964, 91.978813]} icon={customIcon}>
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>

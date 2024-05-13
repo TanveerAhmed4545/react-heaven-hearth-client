@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 import TableMyRow from "./TableMyRow";
+import { Helmet } from "react-helmet-async";
 
 
 const MyBooking = () => {
@@ -33,6 +34,9 @@ const MyBooking = () => {
 
     return (
         <div className=" min-h-[50vh] md:min-h-[80vh]">
+          <Helmet>
+                <title>Heaven Hearth || My Booking</title>
+            </Helmet>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}

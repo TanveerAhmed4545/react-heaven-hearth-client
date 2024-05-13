@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import ReviewCard from "./ReviewCard";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const RoomDetails = () => {
@@ -111,7 +112,9 @@ const RoomDetails = () => {
 
     return (
         <div className="card rounded-none   hover:shadow-2xl hover:shadow-[#D9E1FF]   my-5 lg:my-10 mx-5">
-          
+          <Helmet>
+                <title>Heaven Hearth || Room Details</title>
+            </Helmet>
             
   <div className="">
   <figure><img className=" lg:h-screen lg:w-full" src={images}/></figure>

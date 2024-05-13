@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const MyReview = () => {
@@ -60,6 +61,9 @@ const MyReview = () => {
 
     return (
         <div className=" p-6  rounded-lg">
+          <Helmet>
+                <title>Heaven Hearth || Add Review</title>
+            </Helmet>
       <h2 className="text-xl text-center font-semibold mb-4">Add a Review</h2>
      <form  onSubmit={handleSubmit}>
      <div className="mb-4">
@@ -90,7 +94,7 @@ const MyReview = () => {
       <button
         // onClick={handleSubmit}
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-[#85A1FF] btn text-white font-bold py-2 px-4 rounded"
       >
         Submit Review
       </button>

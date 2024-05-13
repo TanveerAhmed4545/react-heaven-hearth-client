@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -64,6 +65,9 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen ">
+          <Helmet>
+                <title>Heaven Hearth || Register</title>
+            </Helmet>
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left lg:ml-10">
             <h1 className="text-5xl font-bold ">Register Now</h1>

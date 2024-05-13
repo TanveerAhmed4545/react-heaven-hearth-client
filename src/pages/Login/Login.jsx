@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
@@ -62,6 +63,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen ">
+          <Helmet>
+                <title>Heaven Hearth || Login</title>
+            </Helmet>
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left ml-0 lg:ml-10">
             <h1 className="text-4xl font-bold mb-4">Login Now</h1>

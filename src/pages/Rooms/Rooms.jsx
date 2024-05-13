@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RoomCard from "./RoomCard";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 
 const Rooms = () => {
@@ -59,6 +60,9 @@ const Rooms = () => {
 
     return (
         <div className="mb-6">
+            <Helmet>
+                <title>Heaven Hearth || Rooms</title>
+            </Helmet>
 
             <div className="text-center py-8 ">
              <h2 className=" text-2xl lg:text-4xl font-extrabold">
