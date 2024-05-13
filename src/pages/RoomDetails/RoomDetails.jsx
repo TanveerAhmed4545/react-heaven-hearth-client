@@ -1,11 +1,12 @@
 import { useContext,  useEffect,  useState } from "react";
-import { Link,  useParams } from "react-router-dom";
+import { Link,  useNavigate,  useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsCurrencyDollar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import ReviewCard from "./ReviewCard";
+import { toast } from "react-toastify";
 
 
 const RoomDetails = () => {
@@ -14,7 +15,7 @@ const RoomDetails = () => {
     const [reviews, setReviews] = useState([]);
     const {user} = useContext(AuthContext);
     // console.log(user);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const {id} = useParams();
     // console.log(id);
     // const reviewsData = useLoaderData();
@@ -88,7 +89,9 @@ const RoomDetails = () => {
             modal.close();
             }
 
-            // navigate('/my-booking');
+            toast.success("Booked");
+
+            navigate('/my-booking');
           }catch (err) {
                console.log(err)
           }

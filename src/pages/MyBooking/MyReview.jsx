@@ -21,12 +21,13 @@ const MyReview = () => {
     const userRating = form.rating.value;
     const userComment = form.comment.value;
     const userName = user?.displayName;
+    const userPhoto = user?.photoURL;
 
     const timestamp = new Date();
 
     const reviewData = {
 
-        userName,roomId,userRating,userComment,timestamp
+        userName,roomId,userRating,userComment,timestamp,userPhoto
     }
 
     console.log(reviewData);

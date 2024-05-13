@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const TableMyRow = ({book,getData,idx}) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
 
     // eslint-disable-next-line react/prop-types
     const {_id,images,email,price,size,date} = book;
@@ -84,8 +86,7 @@ const TableMyRow = ({book,getData,idx}) => {
 // }
 // }
 
-const [startDate, setStartDate] = useState(new Date());
-const [isOpen, setIsOpen] = useState(false); 
+ 
 
 
 
@@ -193,7 +194,7 @@ const handleOpenModal = () => {
               className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Cancel</button>
             </th>
             <th>
-             <Link to={`/my-review/${_id}`}> <button className="btn btn-ghost text-white bg-[#9CABF6] btn-sm">Add Review</button></Link>
+             <Link to={`/my-review/${_id}`}> <button className="btn btn-ghost text-white bg-[#27AE61] btn-sm">Add Review</button></Link>
             </th>
           </tr>
     );

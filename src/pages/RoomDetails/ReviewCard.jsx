@@ -4,13 +4,13 @@ import demoUserPic from "../../assets/demoUser.png";
 // eslint-disable-next-line react/prop-types
 const ReviewCard = ({item}) => {
       // eslint-disable-next-line react/prop-types
-      const {userName,userRating,userComment,timestamp} = item;
+      const {userName,userRating,userComment,timestamp,userPhoto} = item;
     return (
         <div className="container flex flex-col w-full  p-6  divide-y rounded-md dark:divide-gray-300 dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex justify-between p-4">
 		<div className="flex space-x-4">
 			<div>
-				<img src={demoUserPic} className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
+				<img src={userPhoto? userPhoto:demoUserPic} className="object-cover w-12 h-12 rounded-full dark:bg-gray-500" />
 			</div>
 			<div>
 				<h4 className="font-bold">{userName}</h4>
