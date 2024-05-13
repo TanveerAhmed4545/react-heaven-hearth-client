@@ -17,21 +17,17 @@ const RoomDetails = () => {
     // console.log(user);
     const navigate = useNavigate();
     const {id} = useParams();
-    // console.log(id);
-    // const reviewsData = useLoaderData();
-    // setReviews(reviewsData);
-    // console.log(reviewsData);
+
     const {_id,description,price,size,availability,images,special_offer} = booking;
 
 
-    // const reviewRating = reviews.filter(item => item.roomId === _id);
-    // console.log(reviewRating);
+    
     
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/reviews`)
         .then(res => {
-          // console.log(res.data);
+          
           setReviews(res.data)
         })
     },[])
@@ -55,27 +51,35 @@ const RoomDetails = () => {
 
     const handleSubmit = async () =>{
         
-        // const form = e.target;
-        // if(!user){
-        //     navigate("/login");
-        // }
+        
 
         
         const date = startDate;
         const email = user?.email;
-        // console.log(date,email);
+        const roomId = _id;
+
+
+        const bookingData = {
+          price,
+          size,
+          roomId,
+          images,
+          date,
+            email
+
+        }
 
         const bookData ={
 
             
             availability: "no",
-            date,
-            email
+           
         }
-        // console.table(bookData);
+       
 
           try{
                await axios.patch(`http://localhost:5000/booking/${_id}`,bookData)
+               await axios.post(`http://localhost:5000/booking-post`,bookingData)
 
               // Fetch the updated room details
               const { data } = await axios.get(`http://localhost:5000/rooms/${_id}`);
@@ -100,7 +104,7 @@ const RoomDetails = () => {
     }
 
     const reviewData = reviews.filter(item => item.roomId === _id);
-    console.log(reviewData);
+    // console.log(reviewData);
 
 
     

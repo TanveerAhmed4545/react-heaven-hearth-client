@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             element: <PrivateRoute>
                 <MyReview></MyReview>
             </PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/rooms/${params.id}`)
+            loader: ({params})=> fetch(`http://localhost:5000/booking-review/${params.id}`)
         }
       ]
     },

@@ -7,17 +7,16 @@ import Swal from "sweetalert2";
 
 const MyReview = () => {
     const ownReview = useLoaderData();
+    console.log(ownReview);
     const {user} = useContext(AuthContext);
-    // console.log(user);
-//     const [rating, setRating] = useState(1);
-//   const [comment, setComment] = useState('');
+   
 
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
     // console.log("click");
     const form = e.target;
-    const roomId = ownReview._id;
+    const roomId = ownReview.roomId;
     const userRating = form.rating.value;
     const userComment = form.comment.value;
     const userName = user?.displayName;

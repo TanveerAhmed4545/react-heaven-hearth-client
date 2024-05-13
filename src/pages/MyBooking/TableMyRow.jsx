@@ -12,9 +12,9 @@ const TableMyRow = ({book,getData,idx}) => {
   const [isOpen, setIsOpen] = useState(false);
 
     // eslint-disable-next-line react/prop-types
-    const {_id,images,email,price,size,date} = book;
+    const {_id,roomId,images,email,price,size,date} = book;
 
-    const handleCancel = async(id) =>{
+    const handleCancel = async(id,roomId) =>{
         console.log(id);
 
         Swal.fire({
@@ -27,10 +27,12 @@ const TableMyRow = ({book,getData,idx}) => {
          confirmButtonText: "Yes, cancel it!"
        }).then(async (result) => {
          if (result.isConfirmed) {
-             const {data} = await axios.patch(`http://localhost:5000/booking-cancel/${id}`)
+              await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`)
+            //  console.log(data);
+             const {data} = await axios.delete(`http://localhost:5000/booking-delete/${_id}`)
              console.log(data);
 
-             if(data.modifiedCount>0){
+             if(data.deletedCount > 0){
                  Swal.fire({
                      title: "Canceled!",
                      text: "Your Booking has been Canceled.",
@@ -107,7 +109,8 @@ const handleOpenModal = () => {
     console.table(bookData);
 
     try {
-      const response = await axios.put(`http://localhost:5000/booking-update/${_id}`, bookData);
+      const response = await axios.patch(`http://localhost:5000/book-update/${_id}`, bookData);
+      //  await axios.put(`http://localhost:5000/booking-update/${_id}`, bookData);
       console.log(response.data);
       if (response.data.modifiedCount > 0) {
         Swal.fire({
@@ -141,7 +144,7 @@ const handleOpenModal = () => {
 
 
     return (
-        <tr className="hover" key={_id}>
+        <tr className="hover" >
               <th>{idx+1}</th>
             <td>
               <div className="flex items-center gap-3">
@@ -190,7 +193,7 @@ const handleOpenModal = () => {
             </th>
             <th>
               <button
-              onClick={()=>handleCancel(_id)}
+              onClick={()=>handleCancel(_id,roomId)}
               className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Cancel</button>
             </th>
             <th>

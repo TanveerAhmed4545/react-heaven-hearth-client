@@ -10,7 +10,7 @@ const HomeFeatured = () => {
     useEffect(()=>{
         axios.get('http://localhost:5000/room')
         .then(res => {
-          console.log(res.data);
+        //   console.log(res.data);
           setFeaturedRoom(res.data);
         })
     },[])
