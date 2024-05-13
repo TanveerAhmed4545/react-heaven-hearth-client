@@ -12,14 +12,52 @@ const Navbar = () => {
     
     const { user,logOut } = useContext(AuthContext);
     const links = <>
-        <li className="mr-1"><NavLink to='/'>Home</NavLink></li>
-        <li className="mr-1"><NavLink to='/rooms'>Rooms</NavLink></li>
-        <li className="mr-1"><NavLink to='/my-booking'>My Booking</NavLink></li>
+    <li><NavLink  to='/'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>Home</NavLink></li>
+       <li><NavLink  to='/rooms'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>Rooms</NavLink></li>
+       <li><NavLink  to='/my-booking'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>My Booking</NavLink></li>
+       <li><NavLink  to='/contact'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>Contact Us</NavLink></li>
+        
         
         {
             !user && <>
-            <li className="mr-1"><NavLink to='/login'>Login</NavLink></li>
-            <li className="mr-1"><NavLink to='/register'>Register</NavLink></li>
+            <li><NavLink  to='/login'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>Login</NavLink></li>
+       <li><NavLink  to='/register'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>Register</NavLink></li>
             </>
         }
         

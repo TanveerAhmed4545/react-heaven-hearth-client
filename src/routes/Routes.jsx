@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyReview from "../pages/MyBooking/MyReview";
+import Contact from "../pages/Contact/Contact";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
                 <MyReview></MyReview>
             </PrivateRoute>,
             loader: ({params})=> fetch(`http://localhost:5000/booking-review/${params.id}`)
+        },
+        {
+            path: '/contact',
+            element: <Contact></Contact>
         }
       ]
     },
