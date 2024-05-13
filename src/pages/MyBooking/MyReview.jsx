@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const MyReview = () => {
     const ownReview = useLoaderData();
+    const axiosSecure = useAxiosSecure();
     // console.log(ownReview);
     const {user} = useContext(AuthContext);
    
@@ -33,7 +34,7 @@ const MyReview = () => {
     console.log(reviewData);
 
     try {
-        const {data} =  await axios.post('http://localhost:5000/reviews', reviewData,{withCredentials: true});
+        const {data} =  await axiosSecure.post('/reviews', reviewData);
          if(data.insertedId){
             console.log(data);
             Swal.fire({

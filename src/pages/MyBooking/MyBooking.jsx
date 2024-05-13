@@ -1,15 +1,17 @@
-import axios from "axios";
+// import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 import TableMyRow from "./TableMyRow";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const MyBooking = () => {
 
     const {user} = useContext(AuthContext)
     const [myBooking,setMyBooking] = useState([]);
+    const axiosSecure = useAxiosSecure();
     
 
     useEffect(() => {
@@ -21,7 +23,7 @@ const MyBooking = () => {
     //   await axios(
     //    `http://localhost:5000/my-books/${user?.email}` ,{withCredentials: true}
     //  )
-     const { data } = await axios(`http://localhost:5000/my-booking/${user?.email}` ,{withCredentials: true})
+     const { data } = await axiosSecure.get(`/my-booking/${user?.email}` )
      setMyBooking(data);
    }
 
