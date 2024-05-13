@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 
 const MyReview = () => {
     const ownReview = useLoaderData();
-    console.log(ownReview);
+    // console.log(ownReview);
     const {user} = useContext(AuthContext);
    
 

@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 
 // eslint-disable-next-line react/prop-types
@@ -11,39 +12,97 @@ const TableMyRow = ({book,getData,idx}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
+  // const currentDate = moment();
+  // console.log(currentDate);
+
     // eslint-disable-next-line react/prop-types
     const {_id,roomId,images,email,price,size,date} = book;
 
-    const handleCancel = async(id,roomId) =>{
-        console.log(id);
+    const handleCancel = async(id,roomId,bookingDate) =>{
+        // console.log(id);
 
-        Swal.fire({
-         title: "Are you sure?",
-         text: "You won't be able to revert this!",
-         icon: "warning",
-         showCancelButton: true,
-         confirmButtonColor: "#3085d6",
-         cancelButtonColor: "#d33",
-         confirmButtonText: "Yes, cancel it!"
-       }).then(async (result) => {
-         if (result.isConfirmed) {
-              await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`)
-            //  console.log(data);
-             const {data} = await axios.delete(`http://localhost:5000/booking-delete/${_id}`)
-             console.log(data);
+        const cancelDate = moment(bookingDate).subtract(1, 'days');
+        // console.log(cancelDate);
 
-             if(data.deletedCount > 0){
-                 Swal.fire({
-                     title: "Canceled!",
-                     text: "Your Booking has been Canceled.",
-                     icon: "success"
-                   });
-                   getData();
-             }
+       // current date
+        const currentDate = moment();
+
+    if (currentDate.isBefore(cancelDate)) {
+      Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, cancel it!"
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+              try {
+                  // Make  cancel the booking
+                  await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`);
+
+                  // Delete the booking 
+                  const { data } = await axios.delete(`http://localhost:5000/booking-delete/${id}`);
+                 
+
+                  //  booking  deleted
+                  if (data.deletedCount > 0) {
+                      Swal.fire({
+                          title: "Canceled!",
+                          text: "Your Booking has been Canceled.",
+                          icon: "success"
+                      });
+                      getData(); 
+                  }
+              } catch (error) {
+                  console.error("Error cancelling booking:", error);
+                  // Show error cancellation
+                  Swal.fire({
+                      title: "Error!",
+                      text: "Failed to cancel booking. Please try again later.",
+                      icon: "error"
+                  });
+              }
+          }
+      });
+  } else {
+      // cancellation  not allowed than show error
+      Swal.fire({
+          title: "Cancellation not allowed",
+          text: "You can only cancel the booking 1 day before the booked date.",
+          icon: "error"
+      });
+  }
+
+
+      //   Swal.fire({
+      //    title: "Are you sure?",
+      //    text: "You won't be able to revert this!",
+      //    icon: "warning",
+      //    showCancelButton: true,
+      //    confirmButtonColor: "#3085d6",
+      //    cancelButtonColor: "#d33",
+      //    confirmButtonText: "Yes, cancel it!"
+      //  }).then(async (result) => {
+      //    if (result.isConfirmed) {
+      //         await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`)
+      //       //  console.log(data);
+      //        const {data} = await axios.delete(`http://localhost:5000/booking-delete/${_id}`)
+      //        console.log(data);
+
+      //        if(data.deletedCount > 0){
+      //            Swal.fire({
+      //                title: "Canceled!",
+      //                text: "Your Booking has been Canceled.",
+      //                icon: "success"
+      //              });
+      //              getData();
+      //        }
 
            
-         }
-       });     
+      //    }
+      //  });     
 }
 
 
@@ -106,7 +165,7 @@ const handleOpenModal = () => {
       date,
     };
 
-    console.table(bookData);
+    // console.table(bookData);
 
     try {
       const response = await axios.patch(`http://localhost:5000/book-update/${_id}`, bookData);
@@ -193,7 +252,7 @@ const handleOpenModal = () => {
             </th>
             <th>
               <button
-              onClick={()=>handleCancel(_id,roomId)}
+              onClick={()=>handleCancel(_id,roomId,date)}
               className="btn btn-ghost text-white bg-[#EA1A66] btn-sm">Cancel</button>
             </th>
             <th>
