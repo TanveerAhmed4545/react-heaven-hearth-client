@@ -20,7 +20,7 @@ const RoomDetails = () => {
     const location = useLocation(); 
     const {id} = useParams();
 
-    const {_id,description,price,size,availability,images,special_offer} = booking;
+    const {_id,description,price,size,availability,images,special_offer,allPic} = booking;
 
 
     
@@ -121,6 +121,11 @@ const RoomDetails = () => {
   <figure><img className=" lg:h-screen lg:w-full" src={images}/></figure>
   </div>
   <div className="p-5 lg:p-10 space-y-5 ">
+ 
+  <p className="text-xl font-semibold">Rooms Gallery :</p>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+  {allPic && allPic.map((pic, idx) => (<img key={idx} src={pic}  />))}
+</div>
     
     <p className="text-xl flex items-center"><span className="font-semibold ">Price : </span> <span className="text-blue-gray-600 flex items-center"> {price} <BsCurrencyDollar className=""/></span> </p>
     <p className="text-xl"><span className="font-semibold ">Room Size :</span> <span className="text-blue-gray-600">{size}</span></p>
