@@ -1,5 +1,5 @@
 import { useContext,  useEffect,  useState } from "react";
-import { Link,  useNavigate,  useParams } from "react-router-dom";
+import {   NavLink,  useLocation,  useNavigate,  useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { BsCurrencyDollar } from "react-icons/bs";
 import DatePicker from "react-datepicker";
@@ -17,6 +17,7 @@ const RoomDetails = () => {
     const {user} = useContext(AuthContext);
     // console.log(user);
     const navigate = useNavigate();
+    const location = useLocation(); 
     const {id} = useParams();
 
     const {_id,description,price,size,availability,images,special_offer} = booking;
@@ -150,11 +151,11 @@ const RoomDetails = () => {
 
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-<Link to={!user && '/login'}>
+<NavLink state={location.pathname}  to={!user && '/login'}>
 <button 
 disabled = {availability === 'no'}
 className="btn w-full rounded-none text-white bg-[#959cef]" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
-</Link>
+</NavLink>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Price : {price} $</h3>

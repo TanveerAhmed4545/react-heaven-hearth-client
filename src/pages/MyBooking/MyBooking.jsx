@@ -15,9 +15,13 @@ const MyBooking = () => {
     
 
     useEffect(() => {
+      if(user?.email){
         getData()
+      }
+        
+      
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [user])
+      }, [user?.email])
  
    const getData = async () => {
     //   await axios(
@@ -58,7 +62,7 @@ const MyBooking = () => {
     <tbody>
       {/* row 1 */}
       {
-        myBooking.map((book,idx) => <TableMyRow key={book._id} book={book} getData={getData} idx={idx}></TableMyRow>)
+        myBooking?.map((book,idx) => <TableMyRow key={book._id} book={book} getData={getData} idx={idx}></TableMyRow>)
       }
       
     </tbody>

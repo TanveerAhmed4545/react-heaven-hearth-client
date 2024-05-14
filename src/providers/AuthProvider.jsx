@@ -64,7 +64,7 @@ const AuthProvider = ({children}) => {
       }
     });
     return () => {
-      unSubscribe();
+      return unSubscribe();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reload]);
