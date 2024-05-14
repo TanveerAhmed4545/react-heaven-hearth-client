@@ -10,6 +10,7 @@ import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyReview from "../pages/MyBooking/MyReview";
 import Contact from "../pages/Contact/Contact";
+import About from "../pages/About/About";
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
         {
             path: '/contact',
             element: <Contact></Contact>
+        }
+        ,
+        {
+            path: '/about',
+            element: <About></About>
         }
       ]
     },

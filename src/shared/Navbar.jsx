@@ -40,6 +40,13 @@ const Navbar = () => {
            ? "pending"
            : "mr-3  font-semibold"
        }>Contact Us</NavLink></li>
+       <li><NavLink  to='/about'  className={({ isActive, isPending }) =>
+         isActive
+           ? "bg-none border bg-[#959cef] text-white font-semibold border-[#959cef] mr-3"
+           : isPending
+           ? "pending"
+           : "mr-3  font-semibold"
+       }>About Us</NavLink></li>
         
         
         {
