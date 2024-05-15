@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 
 
 const About = () => {
     return (
         <div className=" my-5 lg:my-10">
+          <Helmet>
+            <title>Heaven Hearth || About</title>
+          </Helmet>
       <div className="mb-5 lg:mb-10">
         <div
           className="hero rounded-2xl "
