@@ -14,13 +14,14 @@ const Contact = () => {
           </Helmet>
     
           <div className="text-center py-8 px-5">
-              <h2 className="text-neutral-900 text-2xl lg:text-4xl font-extrabold">
+              <h2 className=" text-2xl lg:text-4xl font-extrabold">
                 Contact Us
               </h2>
-              <p className="text-neutral-900 pt-6 w-full mx-auto lg:w-9/12">
+              <p className=" pt-6 w-full mx-auto lg:w-9/12">
               For personalized assistance in finding your perfect stay, reach out to Heaven Hearth Hotel. Contact us via phone, email, or visit our office for an unparalleled luxury experience.{" "}
               </p>
             </div>
+
     
        
     
@@ -29,7 +30,7 @@ const Contact = () => {
               <form className="lg:basis-3/5 basis-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                   <label>
-                    <span className="text-neutral-900 text-xl font-bold">
+                    <span className=" text-xl font-bold">
                       Your Name
                     </span>{" "}
                     <br />
@@ -44,7 +45,7 @@ const Contact = () => {
                   {/* input-2 */}
     
                   <label>
-                    <span className="text-neutral-900 text-xl font-bold">
+                    <span className=" text-xl font-bold">
                       Your Email
                     </span>{" "}
                     <br />
@@ -59,7 +60,7 @@ const Contact = () => {
                   {/* input-3  */}
     
                   <label>
-                    <span className="text-neutral-900 text-xl font-bold">
+                    <span className=" text-xl font-bold">
                       Subject
                     </span>{" "}
                     <br />
@@ -74,7 +75,7 @@ const Contact = () => {
                   {/* input-4  */}
     
                   <label>
-                    <span className="text-neutral-900 text-xl font-bold">
+                    <span className=" text-xl font-bold">
                       Phone Number
                     </span>{" "}
                     <br />
@@ -89,7 +90,7 @@ const Contact = () => {
     
                 {/* input 5  */}
                 <label>
-                  <span className="text-neutral-900 text-xl font-bold ">
+                  <span className=" text-xl font-bold ">
                     Message
                   </span>{" "}
                   <br />

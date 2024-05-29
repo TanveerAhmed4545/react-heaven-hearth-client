@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyReview from "../pages/MyBooking/MyReview";
 import Contact from "../pages/Contact/Contact";
 import About from "../pages/About/About";
+import Gallery from "../pages/Gallery/Gallery";
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
         {
             path: '/about',
             element: <About></About>
+        }
+        ,
+        {
+            path: '/gallery',
+            element: <Gallery></Gallery>
         }
       ]
     },
