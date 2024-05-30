@@ -1,35 +1,35 @@
-// import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
-
 import TableMyRow from "./TableMyRow";
 import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useBooking from "../../hooks/useBooking";
+import { Link } from "react-router-dom";
 
 
 const MyBooking = () => {
 
-    const {user} = useContext(AuthContext)
-    const [myBooking,setMyBooking] = useState([]);
-    const axiosSecure = useAxiosSecure();
+  const [booking,refetch] = useBooking();
+  console.log(booking);
+
+    // const {user} = useContext(AuthContext)
+    // const [myBooking,setMyBooking] = useState([]);
+    // const axiosSecure = useAxiosSecure();
     
 
-    useEffect(() => {
-      if(user?.email){
-        getData()
-      }
+  //   useEffect(() => {
+  //     if(user?.email){
+  //       getData()
+  //     }
         
       
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [user?.email])
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //     }, [user?.email])
  
-   const getData = async () => {
-    //   await axios(
-    //    `http://localhost:5000/my-books/${user?.email}` ,{withCredentials: true}
-    //  )
-     const { data } = await axiosSecure.get(`/my-booking/${user?.email}` )
-     setMyBooking(data);
-   }
+  //  const getData = async () => {
+  //   //   await axios(
+  //   //    `https://react-heaven-hearth-server.vercel.app/my-books/${user?.email}` ,{withCredentials: true}
+  //   //  )
+  //    const { data } = await axiosSecure.get(`/my-booking/${user?.email}` )
+  //    setMyBooking(data);
+  //  }
 
 //    console.log(myBooking);
 
@@ -43,6 +43,17 @@ const MyBooking = () => {
           <Helmet>
                 <title>Heaven Hearth || My Booking</title>
             </Helmet>
+
+            <div className="flex justify-between items-center px-10 py-5 bg-[#DBEAFE]">
+              <h2 className="text-xl font-semibold">Payment All</h2>
+              { 
+              booking.length ? <Link to='/payment'>
+              <button className="btn btn-ghost text-white bg-[#27AE61] ">Pay All booking</button>
+              </Link> : <button disabled  className="btn btn-ghost text-white bg-[#27AE61]">Pay All booking</button>
+            }
+              {/* <Link to={`/payment`}> 
+            <button className="btn btn-ghost text-white bg-[#27AE61] ">Pay All booking</button></Link> */}
+            </div>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -57,12 +68,13 @@ const MyBooking = () => {
         <th>Update Date</th>
         <th>Cancel Booking</th>
         <th>Add Review</th>
+        
       </tr>
     </thead>
     <tbody>
       {/* row 1 */}
       {
-        myBooking?.map((book,idx) => <TableMyRow key={book._id} book={book} getData={getData} idx={idx}></TableMyRow>)
+        booking?.map((book,idx) => <TableMyRow key={book._id} book={book} refetch={refetch}  idx={idx}></TableMyRow>)
       }
       
     </tbody>

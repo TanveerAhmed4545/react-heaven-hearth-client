@@ -8,21 +8,20 @@ import moment from "moment";
 
 
 // eslint-disable-next-line react/prop-types
-const TableMyRow = ({book,getData,idx}) => {
+const TableMyRow = ({book,refetch,idx}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
-  // const currentDate = moment();
-  // console.log(currentDate);
+  
 
     // eslint-disable-next-line react/prop-types
     const {_id,roomId,images,email,price,size,date} = book;
 
     const handleCancel = async(id,roomId,bookingDate) =>{
-        // console.log(id);
+       
 
         const cancelDate = moment(bookingDate).subtract(1, 'days');
-        // console.log(cancelDate);
+        
 
        // current date
         const currentDate = moment();
@@ -53,7 +52,7 @@ const TableMyRow = ({book,getData,idx}) => {
                           text: "Your Booking has been Canceled.",
                           icon: "success"
                       });
-                      getData(); 
+                      refetch(); 
                   }
               } catch (error) {
                   console.error("Error cancelling booking:", error);
@@ -75,77 +74,11 @@ const TableMyRow = ({book,getData,idx}) => {
       });
   }
 
-
-      //   Swal.fire({
-      //    title: "Are you sure?",
-      //    text: "You won't be able to revert this!",
-      //    icon: "warning",
-      //    showCancelButton: true,
-      //    confirmButtonColor: "#3085d6",
-      //    cancelButtonColor: "#d33",
-      //    confirmButtonText: "Yes, cancel it!"
-      //  }).then(async (result) => {
-      //    if (result.isConfirmed) {
-      //         await axios.patch(`http://localhost:5000/booking-cancel/${roomId}`)
-      //       //  console.log(data);
-      //        const {data} = await axios.delete(`http://localhost:5000/booking-delete/${_id}`)
-      //        console.log(data);
-
-      //        if(data.deletedCount > 0){
-      //            Swal.fire({
-      //                title: "Canceled!",
-      //                text: "Your Booking has been Canceled.",
-      //                icon: "success"
-      //              });
-      //              getData();
-      //        }
-
-           
-      //    }
-      //  });     
+   
 }
 
 
-// const handleSubmit = async (id) =>{
-//  console.log(id)
-//  const date = startDate;
 
-
-//  const bookData ={
-//      date, 
-//  }
-//  console.table(bookData);
-
-//  try{
-//    await axios.put(`http://localhost:5000/booking-update/${id}`,bookData)
-//    .then(res =>{
-//      console.log(res.data);
-//      if(res.data.modifiedCount>0){
-//        Swal.fire({
-//            title: 'Success!',
-//            text: 'Date updated successfully',
-//            icon: 'success',
-//            confirmButtonText: 'Done'
-//          })
-//          getData();
-//    }else{
-//        Swal.fire({
-//            title: 'Error!',
-//            text: 'Do you want to continue',
-//            icon: 'error',
-//            confirmButtonText: 'Cool'
-//          })
-//    }
-     
-//    })
-// const modal = document.getElementById('my_modal_1');
-// if (modal) {
-// modal.close();
-// }
-// }catch (err) {
-//    console.log(err)
-// }
-// }
 
  
 
@@ -169,7 +102,7 @@ const handleOpenModal = () => {
 
     try {
       const response = await axios.patch(`https://react-heaven-hearth-server.vercel.app/book-update/${_id}`, bookData);
-      //  await axios.put(`http://localhost:5000/booking-update/${_id}`, bookData);
+      //  await axios.put(`https://react-heaven-hearth-server.vercel.app/booking-update/${_id}`, bookData);
       console.log(response.data);
       if (response.data.modifiedCount > 0) {
         Swal.fire({
@@ -178,7 +111,7 @@ const handleOpenModal = () => {
           icon: 'success',
           confirmButtonText: 'Done',
         });
-        getData();
+        refetch();
       } else {
         Swal.fire({
           title: 'Error!',

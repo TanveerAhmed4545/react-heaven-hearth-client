@@ -12,6 +12,8 @@ import MyReview from "../pages/MyBooking/MyReview";
 import Contact from "../pages/Contact/Contact";
 import About from "../pages/About/About";
 import Gallery from "../pages/Gallery/Gallery";
+import Payment from "../pages/Payment/Payment";
+import PaymentHistory from "../pages/Payment/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -68,6 +70,20 @@ const router = createBrowserRouter([
         {
             path: '/gallery',
             element: <Gallery></Gallery>
+        }
+        ,
+        {
+            path: '/payment',
+            element: <PrivateRoute>
+                <Payment></Payment>
+            </PrivateRoute>
+        }
+        ,
+        {
+            path: '/payment-history',
+            element: <PrivateRoute>
+                <PaymentHistory></PaymentHistory>
+            </PrivateRoute>
         }
       ]
     },
