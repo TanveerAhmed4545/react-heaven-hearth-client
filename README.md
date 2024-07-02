@@ -25,3 +25,7 @@ React js, MongoDB, Express, Firebase, Tailwind CSS, DaisyUI, AOS, Animation, Str
 - React leaflet
 - React helmet
 - Aos
+- react-date-picker
+- react-helmet-async
+- swiper-js
+- momentsjs
