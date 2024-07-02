@@ -58,4 +58,4 @@ Run the following command to start the application:
 ```bash
 npm start
 ```
-Now, open your browser and go to http://localhost:3000/ to view your React app.
+Now, open your browser and go to http://localhost:5000/ to view your React app.
