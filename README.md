@@ -5,30 +5,29 @@
 ## Server site: https://github.com/TanveerAhmed4545/react-heaven-hearth-server
 
 ## About
-Haven Hearth is a hotel booking platform designed to provide a seamless and intuitive experience for travellers.
+Haven Hearth is a hotel booking platform designed to provide a seamless and intuitive experience for travelers. Haven Hearth is an elegantly designed hotel booking website created using React, React Router, and Tailwind CSS.
 ## Technologies
 React js, MongoDB, Express, Firebase, Tailwind CSS, DaisyUI, AOS, Animation, Stripe Payment, Swiper js
 ##  Features
 - 📝 This is a hotel booking-related website.
 - 📝 This website design was created by myself.
+- 📝 Authentication functionality is integrated for secure user access, and MongoDB is used for data management.
+- 📝 This website integrates Stripe for secure and efficient payment processing, ensuring a smooth booking experience for users.
+- 📝 This site also leverages daisyUI for UI components. Additional packages and tools such as React Leaflet for maps, React Helmet for managing document heads, and AOS (Animate On Scroll) enhance the website's interactivity and performance.
 - 📝 This website is built with React library and also React router.
 - 📝 This website is built with a tailwind CSS library.
 - 📝 This website mainly has 3 pages. Home/ rooms / my booking  and also login and register.
 - 📝 The Home Page contains a Navbar, Banner, featured rooms, location gap, newsletter, customer review and Footer.
-- 📝  Authentication functionality is included in this website.
 - 📝 MongoDB collection and data have been created by me and that data has been used for this Website.
-- 📝 Also use daisyUi .
-- 📝 Selected category is Hotel booking related.
 
 ##  Packages
-
 - React leaflet
 - React helmet
 - Aos
 - react-date-picker
 - react-helmet-async
 - swiper-js
-- momentsjs
+- moments
 
 ## Installation:
 
